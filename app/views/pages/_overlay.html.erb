@@ -1,0 +1,16 @@
+<div class="overlay-content">
+		<input type="text" placeholder="search">
+
+<div class="container">
+	<% @root_categories.each do |category| %>		
+		<!-- <h3><%= link_to category.name, category %></h3> -->
+		<ul class="nav_links">
+		<h2><%= link_to category.name, category %></h2>
+			<% category.descendants.each do |descendant| %>
+				<li><%= link_to descendant.name, descendant %></li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
+
+</div>

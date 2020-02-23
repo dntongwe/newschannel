@@ -1,0 +1,103 @@
+<style>
+
+
+.footer-content {
+  background-color: #333;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 30%;
+}
+
+.footer-content .container {
+	
+  margin: 1% 11%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-basis: 30%;
+}
+
+.footer-content .container .nav_links {
+  color: white;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-basis: 20%;
+
+}
+
+
+.footer-content .container .nav_links li{
+	list-style: none;
+}
+
+.footer-content .container .nav_links h3 {
+  color: #f2f2f2;
+  /*padding: 10px 16px;*/
+  padding: 1em 0 0.5em 0;
+}
+
+.footer-content .container .nav_links h3:hover {
+	background-color: yellow;
+	
+}
+
+.footer-content .container .nav_links h3 a {
+ text-decoration: none;
+  color: #f2f2f2;
+  font-size: 1em;
+
+}
+
+.footer-content .container .nav_links li a {
+  color: white;
+    text-decoration: none;
+}
+
+.footer-content .container .nav_links h3 a:hover {
+  background-color: yellow;
+  color: black;
+}
+
+.footer-content .container .nav_links li a:hover {
+	background-color: yellow;
+	color: black;
+}
+
+@media screen and (max-width: 600px) {
+	.footer-content .container .nav_links li{
+		display: none;
+		list-style: none;
+	}
+
+	.footer-content .container .nav_links {
+	  flex-basis: 40%;
+	  justify-content: space-between;
+
+	}
+
+
+}
+
+
+</style>
+
+<div class="footer-content">
+
+<div class="container">
+	<% @root_categories.each do |category| %>		
+		<!-- <h3><%= link_to category.name, category %></h3> -->
+		<ul class="nav_links">
+		<h3><%= link_to category.name, category %></h3>
+			<% category.descendants.each do |descendant| %>
+				<li><%= link_to descendant.name, descendant %></li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
+
+</div>
+
+
+
